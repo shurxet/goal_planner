@@ -1,0 +1,285 @@
+openapi: 3.0.1
+info:
+  contact:
+    email: contact@snippets.local
+  description: Test description
+  license:
+    name: BSD License
+  termsOfService: https://www.google.com/policies/terms/
+  title: Snippets API
+  version: v1
+servers:
+- url: http://127.0.0.1:8000/core
+security:
+- Basic: []
+paths:
+  /login:
+    post:
+      operationId: login_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ""
+      tags:
+      - login
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /profile:
+    delete:
+      operationId: profile_delete
+      responses:
+        "204":
+          content: {}
+          description: ""
+      tags:
+      - profile
+      x-accepts: application/json
+    get:
+      operationId: profile_read
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ""
+      tags:
+      - profile
+      x-accepts: application/json
+    patch:
+      operationId: profile_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ""
+      tags:
+      - profile
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: profile_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/User'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/User'
+          description: ""
+      tags:
+      - profile
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /signup:
+    post:
+      operationId: signup_create
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+        required: true
+      responses:
+        "201":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUser'
+          description: ""
+      tags:
+      - signup
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+  /update_password:
+    patch:
+      operationId: update_password_partial_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePassword'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePassword'
+          description: ""
+      tags:
+      - update_password
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+    put:
+      operationId: update_password_update
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePassword'
+        required: true
+      responses:
+        "200":
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePassword'
+          description: ""
+      tags:
+      - update_password
+      x-codegen-request-body-name: data
+      x-contentType: application/json
+      x-accepts: application/json
+components:
+  schemas:
+    Login:
+      example:
+        password: password
+        username: username
+      properties:
+        username:
+          minLength: 1
+          title: Username
+          type: string
+        password:
+          minLength: 1
+          title: Password
+          type: string
+      required:
+      - password
+      - username
+      type: object
+    User:
+      example:
+        last_name: last_name
+        id: 0
+        first_name: first_name
+        email: email
+        username: username
+      properties:
+        id:
+          readOnly: true
+          title: ID
+          type: integer
+        username:
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          maxLength: 150
+          minLength: 1
+          pattern: ^[\w.@+-]+$
+          title: Username
+          type: string
+        first_name:
+          maxLength: 150
+          title: First name
+          type: string
+        last_name:
+          maxLength: 150
+          title: Last name
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+      required:
+      - username
+      type: object
+    CreateUser:
+      example:
+        password: password
+        last_name: last_name
+        id: 0
+        password_repeat: password_repeat
+        first_name: first_name
+        email: email
+        username: username
+      properties:
+        id:
+          readOnly: true
+          title: ID
+          type: integer
+        username:
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          maxLength: 150
+          minLength: 1
+          pattern: ^[\w.@+-]+$
+          title: Username
+          type: string
+        first_name:
+          maxLength: 150
+          title: First name
+          type: string
+        last_name:
+          maxLength: 150
+          title: Last name
+          type: string
+        email:
+          format: email
+          maxLength: 254
+          title: Email address
+          type: string
+        password:
+          minLength: 1
+          title: Password
+          type: string
+        password_repeat:
+          minLength: 1
+          title: Password repeat
+          type: string
+      required:
+      - password
+      - password_repeat
+      - username
+      type: object
+    UpdatePassword:
+      example:
+        old_password: old_password
+        new_password: new_password
+      properties:
+        old_password:
+          minLength: 1
+          title: Old password
+          type: string
+        new_password:
+          minLength: 1
+          title: New password
+          type: string
+      required:
+      - new_password
+      - old_password
+      type: object
+  securitySchemes:
+    Basic:
+      scheme: basic
+      type: http
+x-original-swagger-version: "2.0"

@@ -1,0 +1,9 @@
+.idea/
+.*_cache/
+__pycache__
+.pytest_cache
+.coverage
+venv/
+.env
+django_media/
+postgres_data/
