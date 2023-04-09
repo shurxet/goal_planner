@@ -52,7 +52,6 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'drf_spectacular',
-    'drf_spectacular_sidecar',
     'rest_framework',
     'social_django',
     'core',
@@ -171,9 +170,6 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "GOAL PLANNER API",
     "DESCRIPTION": "API",
     "VERSION": "1.0.0",
-    'SWAGGER_UI_DIST': 'SIDECAR',
-    'SWAGGER_UI_FAVICON_HREF': 'SIDECAR',
-    'REDOC_DIST': 'SIDECAR',
 }
 
 

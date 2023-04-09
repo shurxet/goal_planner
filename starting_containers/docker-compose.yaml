@@ -72,8 +72,8 @@ services:
   swagger-tasks:
     image: swaggerapi/swagger-ui:latest
     environment:
-      SWAGGER_JSON: "/swagger.json"
+      SWAGGER_JSON: "/openapi.yaml"
     volumes:
-      - ./swagger.json:/swagger.json
+      - ./openapi.yaml:/openapi.yaml
     ports:
       - "8080:8080"
