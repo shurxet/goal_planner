@@ -39,7 +39,7 @@ DEBUG = env('DEBUG')
 SECRET_KEY = env('SECRET_KEY')
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
@@ -54,7 +54,9 @@ INSTALLED_APPS = [
     'drf_spectacular',
     'rest_framework',
     'social_django',
+    'django_filters',
     'core',
+    'goals'
 ]
 
 
@@ -143,11 +145,11 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/4.0/howto/static-files/
 
 
-STATIC_URL = "/django_static/"
-STATIC_ROOT = os.path.join(BASE_DIR, "django_static")
+STATIC_URL = '/django_static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'django_static')
 
-MEDIA_URL = "/django_media/"
-MEDIA_ROOT = os.path.join(BASE_DIR, "django_media")
+MEDIA_URL = '/django_media/'
+MEDIA_ROOT = os.path.join(BASE_DIR, 'django_media')
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/4.0/ref/settings/#default-auto-field
@@ -155,21 +157,25 @@ MEDIA_ROOT = os.path.join(BASE_DIR, "django_media")
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
-AUTH_USER_MODEL = "core.User"
+AUTH_USER_MODEL = 'core.User'
 
 
-DJANGO_SETTINGS_MODULE = "backend.settings"
+DJANGO_SETTINGS_MODULE = 'backend.settings'
 
 
 REST_FRAMEWORK = {
-    "DEFAULT_SCHEMA_CLASS": "drf_spectacular.openapi.AutoSchema",
+    'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.LimitOffsetPagination',
+    'DEFAULT_SCHEMA_CLASS': 'drf_spectacular.openapi.AutoSchema',
+    'DEFAULT_FILTER_BACKENDS': (
+        'django_filters.rest_framework.DjangoFilterBackend',
+    ),
 }
 
 
 SPECTACULAR_SETTINGS = {
-    "TITLE": "GOAL PLANNER API",
-    "DESCRIPTION": "API",
-    "VERSION": "1.0.0",
+    'TITLE': 'GOAL PLANNER API',
+    'DESCRIPTION': 'API',
+    'VERSION': '1.0.0',
 }
 
 
