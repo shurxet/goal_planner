@@ -1,0 +1,1890 @@
+openapi: 3.0.3
+info:
+  title: ''
+  version: 0.0.0
+paths:
+  /bot/verify:
+    patch:
+      operationId: bot_verify_partial_update
+      tags:
+      - bot
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedTgUserSerializers'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedTgUserSerializers'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedTgUserSerializers'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TgUserSerializers'
+          description: ''
+  /core/login:
+    post:
+      operationId: core_login_create
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Login'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Login'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Login'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Login'
+          description: ''
+  /core/profile:
+    get:
+      operationId: core_profile_retrieve
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+          description: ''
+    put:
+      operationId: core_profile_update
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Profile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Profile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Profile'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+          description: ''
+    patch:
+      operationId: core_profile_partial_update
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedProfile'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Profile'
+          description: ''
+    delete:
+      operationId: core_profile_destroy
+      tags:
+      - core
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /core/signup:
+    post:
+      operationId: core_signup_create
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/CreateUser'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CreateUser'
+          description: ''
+  /core/update_password:
+    put:
+      operationId: core_update_password_update
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/UpdatePassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/UpdatePassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/UpdatePassword'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePassword'
+          description: ''
+    patch:
+      operationId: core_update_password_partial_update
+      tags:
+      - core
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdatePassword'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdatePassword'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedUpdatePassword'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/UpdatePassword'
+          description: ''
+  /goals/board/{id}:
+    get:
+      operationId: goals_board_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Доска.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Board'
+          description: ''
+    put:
+      operationId: goals_board_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Доска.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Board'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Board'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Board'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Board'
+          description: ''
+    patch:
+      operationId: goals_board_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Доска.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedBoard'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedBoard'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedBoard'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Board'
+          description: ''
+    delete:
+      operationId: goals_board_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Доска.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /goals/board/create:
+    post:
+      operationId: goals_board_create_create
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/BoardCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/BoardCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/BoardCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/BoardCreate'
+          description: ''
+  /goals/board/list:
+    get:
+      operationId: goals_board_list_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedBoardListList'
+          description: ''
+  /goals/goal/{id}:
+    get:
+      operationId: goals_goal_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Цель.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Goal'
+          description: ''
+    put:
+      operationId: goals_goal_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Цель.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Goal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/Goal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/Goal'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Goal'
+          description: ''
+    patch:
+      operationId: goals_goal_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Цель.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGoal'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGoal'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGoal'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Goal'
+          description: ''
+    delete:
+      operationId: goals_goal_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Цель.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /goals/goal/create:
+    post:
+      operationId: goals_goal_create_create
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoalCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GoalCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCreate'
+          description: ''
+  /goals/goal/list:
+    get:
+      operationId: goals_goal_list_list
+      parameters:
+      - in: query
+        name: category
+        schema:
+          type: integer
+      - in: query
+        name: category__in
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Multiple values may be separated by commas.
+        explode: false
+        style: form
+      - in: query
+        name: due_date__gte
+        schema:
+          type: string
+          format: date-time
+      - in: query
+        name: due_date__lte
+        schema:
+          type: string
+          format: date-time
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - in: query
+        name: priority
+        schema:
+          type: integer
+          title: Приоритет
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        description: |-
+          * `1` - Низкий
+          * `2` - Средний
+          * `3` - Высокий
+          * `4` - Критический
+
+          * `1` - Низкий
+          * `2` - Средний
+          * `3` - Высокий
+          * `4` - Критический
+      - in: query
+        name: priority__in
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Multiple values may be separated by commas.
+        explode: false
+        style: form
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      - in: query
+        name: status
+        schema:
+          type: integer
+          title: Статус
+          enum:
+          - 1
+          - 2
+          - 3
+          - 4
+        description: |-
+          * `1` - К выполнению
+          * `2` - В процессе
+          * `3` - Выполнено
+          * `4` - Архив
+
+          * `1` - К выполнению
+          * `2` - В процессе
+          * `3` - Выполнено
+          * `4` - Архив
+      - in: query
+        name: status__in
+        schema:
+          type: array
+          items:
+            type: integer
+        description: Multiple values may be separated by commas.
+        explode: false
+        style: form
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGoalList'
+          description: ''
+  /goals/goal_category/{id}:
+    get:
+      operationId: goals_goal_category_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCategory'
+          description: ''
+    put:
+      operationId: goals_goal_category_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoalCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GoalCategory'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCategory'
+          description: ''
+    patch:
+      operationId: goals_goal_category_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGoalCategory'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGoalCategory'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGoalCategory'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCategory'
+          description: ''
+    delete:
+      operationId: goals_goal_category_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Категория.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /goals/goal_category/create:
+    post:
+      operationId: goals_goal_category_create_create
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalCategoryCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoalCategoryCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GoalCategoryCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCategoryCreate'
+          description: ''
+  /goals/goal_category/list:
+    get:
+      operationId: goals_goal_category_list_list
+      parameters:
+      - in: query
+        name: board
+        schema:
+          type: integer
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGoalCategoryList'
+          description: ''
+  /goals/goal_comment/{id}:
+    get:
+      operationId: goals_goal_comment_retrieve
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комментарий.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalComment'
+          description: ''
+    put:
+      operationId: goals_goal_comment_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комментарий.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoalComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GoalComment'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalComment'
+          description: ''
+    patch:
+      operationId: goals_goal_comment_partial_update
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комментарий.
+        required: true
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/PatchedGoalComment'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/PatchedGoalComment'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/PatchedGoalComment'
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalComment'
+          description: ''
+    delete:
+      operationId: goals_goal_comment_destroy
+      parameters:
+      - in: path
+        name: id
+        schema:
+          type: integer
+        description: A unique integer value identifying this Комментарий.
+        required: true
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '204':
+          description: No response body
+  /goals/goal_comment/create:
+    post:
+      operationId: goals_goal_comment_create_create
+      tags:
+      - goals
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/GoalCommentCreate'
+          application/x-www-form-urlencoded:
+            schema:
+              $ref: '#/components/schemas/GoalCommentCreate'
+          multipart/form-data:
+            schema:
+              $ref: '#/components/schemas/GoalCommentCreate'
+        required: true
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '201':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/GoalCommentCreate'
+          description: ''
+  /goals/goal_comment/list:
+    get:
+      operationId: goals_goal_comment_list_list
+      parameters:
+      - name: limit
+        required: false
+        in: query
+        description: Number of results to return per page.
+        schema:
+          type: integer
+      - name: offset
+        required: false
+        in: query
+        description: The initial index from which to return the results.
+        schema:
+          type: integer
+      - name: ordering
+        required: false
+        in: query
+        description: Which field to use when ordering the results.
+        schema:
+          type: string
+      - name: search
+        required: false
+        in: query
+        description: A search term.
+        schema:
+          type: string
+      tags:
+      - goals
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      responses:
+        '200':
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/PaginatedGoalCommentList'
+          description: ''
+  /schema/:
+    get:
+      operationId: schema_retrieve
+      description: |-
+        OpenApi3 schema for this API. Format can be selected via content negotiation.
+
+        - YAML: application/vnd.oai.openapi
+        - JSON: application/vnd.oai.openapi+json
+      parameters:
+      - in: query
+        name: format
+        schema:
+          type: string
+          enum:
+          - json
+          - yaml
+      - in: query
+        name: lang
+        schema:
+          type: string
+          enum:
+          - af
+          - ar
+          - ar-dz
+          - ast
+          - az
+          - be
+          - bg
+          - bn
+          - br
+          - bs
+          - ca
+          - cs
+          - cy
+          - da
+          - de
+          - dsb
+          - el
+          - en
+          - en-au
+          - en-gb
+          - eo
+          - es
+          - es-ar
+          - es-co
+          - es-mx
+          - es-ni
+          - es-ve
+          - et
+          - eu
+          - fa
+          - fi
+          - fr
+          - fy
+          - ga
+          - gd
+          - gl
+          - he
+          - hi
+          - hr
+          - hsb
+          - hu
+          - hy
+          - ia
+          - id
+          - ig
+          - io
+          - is
+          - it
+          - ja
+          - ka
+          - kab
+          - kk
+          - km
+          - kn
+          - ko
+          - ky
+          - lb
+          - lt
+          - lv
+          - mk
+          - ml
+          - mn
+          - mr
+          - ms
+          - my
+          - nb
+          - ne
+          - nl
+          - nn
+          - os
+          - pa
+          - pl
+          - pt
+          - pt-br
+          - ro
+          - ru
+          - sk
+          - sl
+          - sq
+          - sr
+          - sr-latn
+          - sv
+          - sw
+          - ta
+          - te
+          - tg
+          - th
+          - tk
+          - tr
+          - tt
+          - udm
+          - uk
+          - ur
+          - uz
+          - vi
+          - zh-hans
+          - zh-hant
+      tags:
+      - schema
+      security:
+      - cookieAuth: []
+      - basicAuth: []
+      - {}
+      responses:
+        '200':
+          content:
+            application/vnd.oai.openapi:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/yaml:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/vnd.oai.openapi+json:
+              schema:
+                type: object
+                additionalProperties: {}
+            application/json:
+              schema:
+                type: object
+                additionalProperties: {}
+          description: ''
+components:
+  schemas:
+    Board:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardParticipant'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          title: Удалена
+      required:
+      - created
+      - id
+      - participants
+      - title
+      - updated
+    BoardCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          readOnly: true
+          title: Удалена
+      required:
+      - created
+      - id
+      - is_deleted
+      - title
+      - updated
+    BoardList:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          title: Удалена
+      required:
+      - created
+      - id
+      - title
+      - updated
+    BoardParticipant:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        role:
+          $ref: '#/components/schemas/RoleEnum'
+        user:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        board:
+          type: integer
+          readOnly: true
+          title: Доска
+      required:
+      - board
+      - created
+      - id
+      - role
+      - updated
+      - user
+    CreateUser:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+        password:
+          type: string
+          writeOnly: true
+        password_repeat:
+          type: string
+          writeOnly: true
+      required:
+      - id
+      - password
+      - password_repeat
+      - username
+    Goal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        category:
+          type: integer
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+          title: Описание
+        due_date:
+          type: string
+          format: date-time
+          nullable: true
+          title: Дата выполнения
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          title: Статус
+          minimum: 0
+          maximum: 32767
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/PriorityEnum'
+          title: Приоритет
+          minimum: 0
+          maximum: 32767
+        user:
+          type: integer
+          readOnly: true
+          nullable: true
+          title: Автор
+      required:
+      - category
+      - created
+      - id
+      - title
+      - updated
+      - user
+    GoalCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/Profile'
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          title: Удалена
+        board:
+          type: integer
+          readOnly: true
+          title: Доска
+      required:
+      - board
+      - created
+      - id
+      - title
+      - updated
+      - user
+    GoalCategoryCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          readOnly: true
+          title: Удалена
+        board:
+          type: integer
+          title: Доска
+      required:
+      - created
+      - id
+      - is_deleted
+      - title
+      - updated
+    GoalComment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/Profile'
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        text:
+          type: string
+          title: Текст
+        goal:
+          type: integer
+          readOnly: true
+          nullable: true
+          title: Цель
+      required:
+      - created
+      - goal
+      - id
+      - text
+      - updated
+      - user
+    GoalCommentCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        text:
+          type: string
+          title: Текст
+        goal:
+          type: integer
+          nullable: true
+          title: Цель
+      required:
+      - created
+      - id
+      - text
+      - updated
+    GoalCreate:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        category:
+          type: integer
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+          title: Описание
+        due_date:
+          type: string
+          format: date-time
+          nullable: true
+          title: Дата выполнения
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          title: Статус
+          minimum: 0
+          maximum: 32767
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/PriorityEnum'
+          title: Приоритет
+          minimum: 0
+          maximum: 32767
+      required:
+      - category
+      - created
+      - id
+      - title
+      - updated
+    Login:
+      type: object
+      properties:
+        username:
+          type: string
+        password:
+          type: string
+          writeOnly: true
+      required:
+      - password
+      - username
+    PaginatedBoardListList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardList'
+    PaginatedGoalCategoryList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalCategory'
+    PaginatedGoalCommentList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/GoalComment'
+    PaginatedGoalList:
+      type: object
+      properties:
+        count:
+          type: integer
+          example: 123
+        next:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=400&limit=100
+        previous:
+          type: string
+          nullable: true
+          format: uri
+          example: http://api.example.org/accounts/?offset=200&limit=100
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/Goal'
+    PatchedBoard:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        participants:
+          type: array
+          items:
+            $ref: '#/components/schemas/BoardParticipant'
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          title: Удалена
+    PatchedGoal:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        category:
+          type: integer
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        description:
+          type: string
+          nullable: true
+          title: Описание
+        due_date:
+          type: string
+          format: date-time
+          nullable: true
+          title: Дата выполнения
+        status:
+          allOf:
+          - $ref: '#/components/schemas/StatusEnum'
+          title: Статус
+          minimum: 0
+          maximum: 32767
+        priority:
+          allOf:
+          - $ref: '#/components/schemas/PriorityEnum'
+          title: Приоритет
+          minimum: 0
+          maximum: 32767
+        user:
+          type: integer
+          readOnly: true
+          nullable: true
+          title: Автор
+    PatchedGoalCategory:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/Profile'
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        title:
+          type: string
+          title: Название
+          maxLength: 255
+        is_deleted:
+          type: boolean
+          title: Удалена
+        board:
+          type: integer
+          readOnly: true
+          title: Доска
+    PatchedGoalComment:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        user:
+          allOf:
+          - $ref: '#/components/schemas/Profile'
+          readOnly: true
+        created:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата создания
+        updated:
+          type: string
+          format: date-time
+          readOnly: true
+          title: Дата последнего обновления
+        text:
+          type: string
+          title: Текст
+        goal:
+          type: integer
+          readOnly: true
+          nullable: true
+          title: Цель
+    PatchedProfile:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+    PatchedTgUserSerializers:
+      type: object
+      properties:
+        tg_id:
+          type: string
+          readOnly: true
+          pattern: ^[-a-zA-Z0-9_]+$
+        username:
+          type: string
+          readOnly: true
+          nullable: true
+        verification_code:
+          type: string
+          writeOnly: true
+        user_id:
+          type: integer
+          nullable: true
+          readOnly: true
+    PatchedUpdatePassword:
+      type: object
+      properties:
+        old_password:
+          type: string
+          writeOnly: true
+        new_password:
+          type: string
+          writeOnly: true
+    PriorityEnum:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      description: |-
+        * `1` - Низкий
+        * `2` - Средний
+        * `3` - Высокий
+        * `4` - Критический
+    Profile:
+      type: object
+      properties:
+        id:
+          type: integer
+          readOnly: true
+        username:
+          type: string
+          description: Required. 150 characters or fewer. Letters, digits and @/./+/-/_
+            only.
+          pattern: ^[\w.@+-]+$
+          maxLength: 150
+        first_name:
+          type: string
+          maxLength: 150
+        last_name:
+          type: string
+          maxLength: 150
+        email:
+          type: string
+          format: email
+          title: Email address
+          maxLength: 254
+      required:
+      - id
+      - username
+    RoleEnum:
+      enum:
+      - 2
+      - 3
+      type: integer
+      description: |-
+        * `2` - Редактор
+        * `3` - Читатель
+    StatusEnum:
+      enum:
+      - 1
+      - 2
+      - 3
+      - 4
+      type: integer
+      description: |-
+        * `1` - К выполнению
+        * `2` - В процессе
+        * `3` - Выполнено
+        * `4` - Архив
+    TgUserSerializers:
+      type: object
+      properties:
+        tg_id:
+          type: string
+          readOnly: true
+          pattern: ^[-a-zA-Z0-9_]+$
+        username:
+          type: string
+          readOnly: true
+          nullable: true
+        verification_code:
+          type: string
+          writeOnly: true
+        user_id:
+          type: integer
+          nullable: true
+          readOnly: true
+      required:
+      - tg_id
+      - user_id
+      - username
+      - verification_code
+    UpdatePassword:
+      type: object
+      properties:
+        old_password:
+          type: string
+          writeOnly: true
+        new_password:
+          type: string
+          writeOnly: true
+      required:
+      - new_password
+      - old_password
+  securitySchemes:
+    basicAuth:
+      type: http
+      scheme: basic
+    cookieAuth:
+      type: apiKey
+      in: cookie
+      name: sessionid

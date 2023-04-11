@@ -22,8 +22,9 @@ from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('core/', include("core.urls")),
-    path('oauth/', include("social_django.urls", namespace='social')),
+    path('core/', include('core.urls')),
+    path('goals/', include('goals.urls')),
+    path('oauth/', include('social_django.urls', namespace='social')),
 
     path('schema/', SpectacularAPIView.as_view(), name='schema'),
     path('schema/swagger-ui/', SpectacularSwaggerView.as_view(url_name='schema')),
