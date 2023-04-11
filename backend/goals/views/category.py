@@ -36,4 +36,3 @@ class GoalCategoryView(generics.RetrieveUpdateDestroyAPIView):
     def perform_destroy(self, instance: GoalCategory):
         instance.is_deleted = True
         instance.save(update_fields=('is_deleted',))
-        return instance

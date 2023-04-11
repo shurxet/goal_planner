@@ -38,4 +38,3 @@ class GoalView(generics.RetrieveUpdateDestroyAPIView):
     def perform_destroy(self, instance: Type[Goal]):
         instance.status = instance.Status.archived
         instance.save(update_fields=('status',))
-        return instance
