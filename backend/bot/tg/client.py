@@ -1,4 +1,4 @@
-from bot.tg.models import GetUpdatesResponse, SendMessageResponse
+from bot.tg import GetUpdatesResponse, SendMessageResponse
 import requests
 
 
