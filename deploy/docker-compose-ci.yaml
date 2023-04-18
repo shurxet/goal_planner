@@ -41,7 +41,7 @@ services:
 
 
   bot:
-    image: DOCKER_USERNAME/backend_goal_planner:latest
+    image: $DOCKER_USERNAME/backend_goal_planner:latest
     env_file:
       - ./.env
     depends_on:
