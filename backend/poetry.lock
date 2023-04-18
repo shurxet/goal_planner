@@ -720,6 +720,32 @@ files = [
 ]
 
 [[package]]
+name = "pytelegrambotapi"
+version = "4.11.0"
+description = "Python Telegram bot api."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "pyTelegramBotAPI-4.11.0.tar.gz", hash = "sha256:dba9184bae3bb6a56c70ad3216202cd734a63b6b508ec1b1a2f23afa399d3c47"},
+]
+
+[package.dependencies]
+requests = "*"
+
+[package.extras]
+aiohttp = ["aiohttp"]
+aioredis = ["aioredis"]
+coloredlogs = ["coloredlogs"]
+fastapi = ["fastapi"]
+json = ["ujson"]
+pil = ["Pillow"]
+psutil = ["psutil"]
+redis = ["redis (>=3.4.1)"]
+uvicorn = ["uvicorn"]
+watchdog = ["watchdog"]
+
+[[package]]
 name = "python3-openid"
 version = "3.2.0"
 description = "OpenID support for modern servers and consumers."
@@ -898,6 +924,22 @@ files = [
 ]
 
 [[package]]
+name = "telebot"
+version = "0.0.5"
+description = "A Telegram bot library, with simple route decorators."
+category = "main"
+optional = false
+python-versions = "*"
+files = [
+    {file = "telebot-0.0.5-py3-none-any.whl", hash = "sha256:50327c240243480d40ade4ea5bea4f464bf57d4ff000ea669fcd705396074863"},
+    {file = "telebot-0.0.5.tar.gz", hash = "sha256:848a5885b57247b65edd0e92647b4372ebd8d41611dca3f344788c11deac2571"},
+]
+
+[package.dependencies]
+pyTelegramBotAPI = "*"
+requests = "*"
+
+[[package]]
 name = "typing-extensions"
 version = "4.5.0"
 description = "Backported and Experimental Type Hints for Python 3.7+"
@@ -953,4 +995,4 @@ socks = ["PySocks (>=1.5.6,!=1.5.7,<2.0)"]
 [metadata]
 lock-version = "2.0"
 python-versions = "^3.11.3"
-content-hash = "4c2c2c5f5540095cf3825eb9d1ed6e8a137ff4dbab16e3a087c2b64996849ed4"
+content-hash = "be8d815d95a70ce2374461d2e8c008f43a9027047478286b20f4922073f78aac"

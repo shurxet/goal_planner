@@ -40,6 +40,19 @@ services:
     command: python manage.py runserver 0.0.0.0:8000
 
 
+  bot:
+    image: DOCKER_USERNAME/backend_goal_planner:latest
+    env_file:
+      - ./.env
+    depends_on:
+      postgres:
+        condition: service_healthy
+      migrations:
+        condition: service_completed_successfully
+    restart: always
+    command: python manage.py runbot
+
+
   frontend:
     image: sermalenk/skypro-front:lesson-38
     volumes:
