@@ -33,12 +33,8 @@ class Command(BaseCommand):
         self.tg_client = TgClient(settings.BOT_TOKEN)
         self.storage = MemoryStorage()
 
-    @staticmethod
-    def _generate_verification_code() -> str:
-        return os.urandom(12).hex()
-
     def handle_unverified_user(self, msg: Message, tg_user: TgUser):
-        code: str = self._generate_verification_code()
+        code: str = self.tg_client.get_verification_code()
         tg_user.verification_code = code
         tg_user.save(update_fields=('verification_code',))
         self.tg_client.send_message(chat_id=msg.chat.id, text=f'[verification_code] {tg_user.verification_code}')

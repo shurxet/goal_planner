@@ -1,3 +1,4 @@
+import os
 from bot.tg import GetUpdatesResponse, SendMessageResponse
 import requests
 
@@ -5,6 +6,13 @@ import requests
 class TgClient:
     def __init__(self, token: str):
         self.token = token
+
+    @staticmethod
+    def _generate_verification_code() -> str:
+        return os.urandom(12).hex()
+
+    def get_verification_code(self):
+        return self._generate_verification_code()
 
     def get_url(self, method: str) -> str:
         return f"https://api.telegram.org/bot{self.token}/{method}"
