@@ -24,5 +24,5 @@ class BoardParticipant(BaseModel):
 
     class Meta:
         unique_together = ('board', 'user')
-        verbose_name = 'частник'
+        verbose_name = 'Участник'
         verbose_name_plural = 'Участники'

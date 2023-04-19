@@ -56,7 +56,8 @@ INSTALLED_APPS = [
     'social_django',
     'django_filters',
     'core',
-    'goals'
+    'goals',
+    'bot'
 ]
 
 
@@ -193,3 +194,5 @@ SOCIAL_AUTH_VK_OAUTH2_SCOPE = ['email']
 SOCIAL_AUTH_VK_EXTRA_DATA = [('email', 'email'),]
 SOCIAL_AUTH_NEW_USER_REDIRECT_URL = '/logged-in/'
 SOCIAL_AUTH_USER_MODEL = 'core.User'
+
+BOT_TOKEN = env('BOT_TOKEN')
