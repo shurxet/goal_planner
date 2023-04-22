@@ -45,7 +45,7 @@ class BoardSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
     def update(self, instance, validated_data):
-        owner = validated_data.pop('user')
+        owner = validated_data.get('participants', [{}])[0].get('user')
         new_participants = validated_data.pop('participants')
         new_by_id = {part['user'].id: part for part in new_participants}
 
