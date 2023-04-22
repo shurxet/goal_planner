@@ -6,6 +6,7 @@ from tests.factories import GoalCommentFactory
 @pytest.mark.django_db
 def test_comment_create(client, get_credentials, goal, board_participant):
     """Создание комментария"""
+
     data = {
         'text': 'text',
         'goal': goal.id,
@@ -26,10 +27,13 @@ def test_comment_create(client, get_credentials, goal, board_participant):
 @pytest.mark.django_db
 def test_comment_list(client, get_credentials, user, goal, board_participant):
     """Список комментариев"""
+
     comments = GoalCommentFactory.create_batch(10, user=user, goal=goal)
+    comments.sort(key=lambda x: x.id, reverse=True)
 
     response = client.get(
         path='/goals/goal_comment/list',
+        data={'goal': goal.id},
         HTTP_AUTHORIZATION=get_credentials
     )
 
@@ -40,6 +44,7 @@ def test_comment_list(client, get_credentials, user, goal, board_participant):
 @pytest.mark.django_db
 def test_comment_retrieve(client, get_credentials, goal_comment, board_participant):
     """Просмотр комментария"""
+
     response = client.get(
         path=f'/goals/goal_comment/{goal_comment.id}',
         HTTP_AUTHORIZATION=get_credentials
@@ -52,22 +57,24 @@ def test_comment_retrieve(client, get_credentials, goal_comment, board_participa
 @pytest.mark.django_db
 def test_comment_update(client, get_credentials, goal_comment, board_participant):
     """Обновление комментария"""
-    new_text = 'updated_text'
+
+    text = 'text'
 
     response = client.patch(
         path=f'/goals/goal_comment/{goal_comment.id}',
         HTTP_AUTHORIZATION=get_credentials,
-        data={'text': new_text},
+        data={'text': text},
         content_type='application/json'
     )
 
     assert response.status_code == 200
-    assert response.data.get('text') == new_text
+    assert response.data.get('text') == text
 
 
 @pytest.mark.django_db
 def test_comment_delete(client, get_credentials, goal_comment, board_participant):
     """Удаление комментария"""
+
     response = client.delete(
         path=f'/goals/goal_comment/{goal_comment.id}',
         HTTP_AUTHORIZATION=get_credentials,
